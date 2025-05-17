@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
+using System.Net.Mail;
 
 public class Program
 {
@@ -10,6 +11,8 @@ public class Program
         Journal myJournal = new Journal();
         Entry anEntry = new Entry();
         PromptGenerator journalPrompt = new PromptGenerator();
+        var dateTimeNow = DateTime.Now;
+        string currentDateTime = dateTimeNow.ToString();
         int userEntry = 0;
         
         Console.WriteLine("");
@@ -36,6 +39,7 @@ public class Program
             if (userEntry == 1)
             {
                 string prompt = journalPrompt.GetRandomPrompt();
+                Console.WriteLine(currentDateTime);
                 Console.WriteLine(prompt);
                 Console.WriteLine();
                 Console.WriteLine("Enter your response below: ");
@@ -45,8 +49,11 @@ public class Program
                 string newEntry = Console.ReadLine();
                 anEntry._entryText = newEntry;
                 anEntry._promptText = prompt;
-                myJournal.AddEntry(newEntry);
+                string currentDate =
+                anEntry._date = currentDateTime;
+                myJournal.AddEntry(currentDateTime);
                 myJournal.AddEntry(prompt);
+                myJournal.AddEntry(newEntry);
                 Console.WriteLine("");
                 //anEntry.Display();
             }
