@@ -7,7 +7,7 @@ class Program
     {
         Console.WriteLine("Hello World! This is the Exercise3 Project.");
         Random randomNumber = new Random();
-        int magicNumber =randomNumber.Next(1, 101);
+        int magicNumber = randomNumber.Next(1, 101);
 
         int guess = -1;
         
