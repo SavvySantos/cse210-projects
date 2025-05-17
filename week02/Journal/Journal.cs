@@ -17,7 +17,6 @@ public class Journal
         foreach (string entry in _entries) //object = Entry, name = entry, list name = _entries
         {
             Console.WriteLine(_entries);
-            Console.WriteLine("You are running the correct area.");
         }
     }
 

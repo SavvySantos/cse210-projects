@@ -10,7 +10,7 @@ public class Entry
     public void Display()
     {
         DateTime currentDateTime = DateTime.Now;
-        Console.WriteLine($"{currentDateTime}");
+        Console.WriteLine($"{_date}");
         Console.WriteLine("");
         Console.WriteLine($"{_promptText}");
         Console.WriteLine($"{_entryText}");

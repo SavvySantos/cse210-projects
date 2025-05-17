@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 public class Program
 {
@@ -45,12 +46,14 @@ public class Program
                 anEntry._entryText = newEntry;
                 anEntry._promptText = prompt;
                 myJournal.AddEntry(newEntry);
+                myJournal.AddEntry(prompt);
                 Console.WriteLine("");
+                //anEntry.Display();
             }
             else if (userEntry == 2)
             {
                 Console.WriteLine("");
-                anEntry.Display();
+                myJournal.DisplayAll();
                 Console.WriteLine("");
 
             }
