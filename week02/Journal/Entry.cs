@@ -2,14 +2,11 @@ using System;
 
 public class Entry
 {
-    List<string> journalEntry = new List<string>();
-
-    public string _date;
-    public string _promptText;
-    public string _entryText;
+    public DateTime _date { get; set;}
+    public string _promptText { get; set;}
+    public string _entryText { get; set;}
     public void Display()
     {
-        DateTime currentDateTime = DateTime.Now;
         Console.WriteLine($"{_date}");
         Console.WriteLine("");
         Console.WriteLine($"{_promptText}");

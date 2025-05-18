@@ -5,41 +5,45 @@ using System.Runtime.InteropServices;
 
 public class Journal
 {
-    public List<string> _entries = new List<string>();
+    public List<Entry> _entries = new List<Entry>();
+    public List<string> _journal = new List<string>();
 
-    public void AddEntry(string newEntry)
+
+    public void AddEntry(Entry newEntry)
     {
         _entries.Add(newEntry);
     }
 
     public void DisplayAll()
     {
-        foreach (string entry in _entries) //object = Entry, name = entry, list name = _entries
+        //foreach (Journal myEntries in )
+        foreach (Entry entry in _entries) //object = Entry, name = entry, list name = _entries
         {
-            Console.WriteLine(entry);
+            Console.WriteLine(entry._date);
+            Console.WriteLine(entry._promptText);
+            Console.WriteLine(entry._entryText);
         }
     }
 
     public void SaveToFile(string file)
     {
-        string filename = "journal.txt";
-
-        using (StreamWriter outputFile = new StreamWriter(filename))
+        using (StreamWriter outputFile = new StreamWriter(file))
         {
-            foreach (string entry in _entries)
+            foreach (string entry in _journal)
             {
-                outputFile.WriteLine(_entries);
+                outputFile.WriteLine(entry);
+               // outputFile.WriteLine(entry._promptText);
+                //outputFile.WriteLine(entry._entryText);
             }
-            Console.WriteLine("Your entries have been saved!");
         }
+        Console.WriteLine("Your entries have been saved!");
     }
 
     public void LoadFromFile(string file)
     {
-        List<Journal> journalFiles = new List<Journal>();
         Console.WriteLine("Here are your journal entries: ");
-        string filename = "journal.txt";
-        //string[] fileContent = File.ReadAllLines("c:\\journal.txt");
+        List<Journal> journalFiles = new List<Journal>();
+        string filename = file;
         string[] lines = System.IO.File.ReadAllLines(filename);
 
         foreach (string line in lines)

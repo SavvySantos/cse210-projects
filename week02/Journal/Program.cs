@@ -3,16 +3,14 @@ using System.IO;
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
 using System.Net.Mail;
+using System.ComponentModel;
 
 public class Program
 {
     static void Main(string[] args)
     {
         Journal myJournal = new Journal();
-        Entry anEntry = new Entry();
         PromptGenerator journalPrompt = new PromptGenerator();
-        var dateTimeNow = DateTime.Now;
-        string currentDateTime = dateTimeNow.ToString();
         int userEntry = 0;
         
         Console.WriteLine("");
@@ -39,23 +37,20 @@ public class Program
             if (userEntry == 1)
             {
                 string prompt = journalPrompt.GetRandomPrompt();
-                Console.WriteLine(currentDateTime);
                 Console.WriteLine(prompt);
-                Console.WriteLine();
+                Console.WriteLine("");
                 Console.WriteLine("Enter your response below: ");
 
                 Console.WriteLine("");
 
                 string newEntry = Console.ReadLine();
+                Console.WriteLine("");
+                Entry anEntry = new Entry();
                 anEntry._entryText = newEntry;
                 anEntry._promptText = prompt;
-                string currentDate =
-                anEntry._date = currentDateTime;
-                myJournal.AddEntry(currentDateTime);
-                myJournal.AddEntry(prompt);
-                myJournal.AddEntry(newEntry);
+                anEntry._date = DateTime.Now;
+                myJournal.AddEntry(anEntry);
                 Console.WriteLine("");
-                //anEntry.Display();
             }
             else if (userEntry == 2)
             {
@@ -64,19 +59,29 @@ public class Program
                 Console.WriteLine("");
 
             }
-            //how do I get information from a file C# (google.com) streamreader
-            //highlight section to comment out = ctrl + kc = comments whole section ctrl + ku = uncomments
+
+            //To exceed requirements, if the user enters the option "3", I ask for the file they would like to
+            //load and have the program find that file.
             else if (userEntry == 3)
             {
                 Console.WriteLine("");
-                myJournal.DisplayAll();
+                Console.WriteLine("What file would you like to load? ");
+                string readfile = Console.ReadLine();
+                Journal readJournal = new Journal();
+                readJournal.LoadFromFile(readfile);
             }
 
             else if (userEntry == 4)
             {
-                myJournal.SaveToFile($"{myJournal}");
-                Console.WriteLine("");
-                Console.WriteLine("");
+                {
+                    Console.WriteLine("What file name would you like to save your entry in (ex: myJournal.txt? ");
+                    string filename = Console.ReadLine();
+                    Journal journalFile = new Journal();
+                    journalFile.SaveToFile(filename);
+                    Console.WriteLine("");
+                    Console.WriteLine();
+                    Console.WriteLine("");
+                }
             }
 
             else if (userEntry == 5)
