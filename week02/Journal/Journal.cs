@@ -16,8 +16,7 @@ public class Journal
 
     public void DisplayAll()
     {
-        //foreach (Journal myEntries in )
-        foreach (Entry entry in _entries) //object = Entry, name = entry, list name = _entries
+        foreach (Entry entry in _entries)
         {
             Console.WriteLine(entry._date);
             Console.WriteLine(entry._promptText);
