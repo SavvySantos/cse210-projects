@@ -32,8 +32,6 @@ public class Journal
             foreach (string entry in _journal)
             {
                 outputFile.WriteLine(entry);
-               // outputFile.WriteLine(entry._promptText);
-                //outputFile.WriteLine(entry._entryText);
             }
         }
         Console.WriteLine("Your entries have been saved!");
