@@ -59,9 +59,6 @@ public class Program
                 Console.WriteLine("");
 
             }
-
-            //To exceed requirements, if the user enters the option "3", I ask for the file they would like to
-            //load and have the program find that file.
             else if (userEntry == 3)
             {
                 Console.WriteLine("");
