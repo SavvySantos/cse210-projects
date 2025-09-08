@@ -1,51 +1,53 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
-using System.Runtime.InteropServices;
 
 public class Journal
 {
-    public List<Entry> _entries = new List<Entry>();
-    public List<string> _journal = new List<string>();
-
-
-    public void AddEntry(Entry newEntry)
+    private List<Entry> entries = new List<Entry>();
+    public void AddEntry(string prompt, string newEntry)
     {
-        _entries.Add(newEntry);
+        entries.Add(new Entry(prompt, newEntry));
     }
 
     public void DisplayAll()
     {
-        foreach (Entry entry in _entries)
+        if (entries.Count == 0)
         {
-            Console.WriteLine(entry._date);
-            Console.WriteLine(entry._promptText);
-            Console.WriteLine(entry._entryText);
+            Console.WriteLine("No entries have been written yet.");
+            return;
         }
-    }
-
-    public void SaveToFile(string file)
-    {
-        using (StreamWriter outputFile = new StreamWriter(file))
+        else
         {
-            foreach (string entry in _journal)
+            foreach (var entry in entries)
             {
-                outputFile.WriteLine(entry);
+                Console.WriteLine(entry);
             }
         }
-        Console.WriteLine("Your entries have been saved!");
     }
 
-    public void LoadFromFile(string file)
+    public void SaveToFile(string fileName)
     {
-        Console.WriteLine("Here are your journal entries: ");
-        List<Journal> journalFiles = new List<Journal>();
-        string filename = file;
-        string[] lines = System.IO.File.ReadAllLines(filename);
-
-        foreach (string line in lines)
-        {
-            Console.WriteLine(line);
-        }
+            string path = Path.Combine(Environment.CurrentDirectory, fileName);
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                foreach (var entry in entries)
+                {
+                    writer.WriteLine(entry.ToFileFormat());
+                }
+            }
+            Console.WriteLine("");
+            Console.WriteLine($"Journal saved to {fileName}");
+    }
+    public void LoadFromFile(string fileName)
+    {   
+        entries.Clear();
+            Console.WriteLine("----- Journal Entries ----- ");
+            foreach (var entry in File.ReadAllLines(fileName))
+            {
+                Console.WriteLine("");
+                Console.WriteLine(entry);
+            }
     }
 }
+

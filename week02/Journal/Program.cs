@@ -9,90 +9,79 @@ public class Program
 {
     static void Main(string[] args)
     {
-        Journal myJournal = new Journal();
+        Journal journal = new Journal();
         PromptGenerator journalPrompt = new PromptGenerator();
-        int userEntry = 0;
-        
-        Console.WriteLine("");
-        Console.WriteLine("Hello World! This is the Journal Project.");
-        Console.WriteLine("Welcome to your Journal!");
-        
-        while(userEntry != 5)
+        string prompt = journalPrompt.GetRandomPrompt();
+        int choice = 0;
+
+        while (choice != 5)
         {
             Console.WriteLine("What Would you like to do? ");
 
             Console.WriteLine("");
-            
+
             Console.WriteLine("1. Write a Journal Entry.");
-            Console.WriteLine("2. Display my Journal Entry.");
-            Console.WriteLine("3. Load my Journal Entries.");
-            Console.WriteLine("4. Save my Journal Entry.");
+            Console.WriteLine("2. Display my Journal Entries.");
+            Console.WriteLine("3. Save my Journal Entry.");
+            Console.WriteLine("4. Load my Journal Entries.");
             Console.WriteLine("5. Quit");
 
             Console.WriteLine("");
 
             string response = Console.ReadLine();
-            userEntry = int.Parse(response);
-
-            if (userEntry == 1)
+            choice = int.Parse(response);
+            if (choice == 1)
             {
-                string prompt = journalPrompt.GetRandomPrompt();
+            Console.Write("Woule you like a Journal Prompt? ");
+            string answer = Console.ReadLine();
+            if (answer == "yes")
+            {
                 Console.WriteLine(prompt);
                 Console.WriteLine("");
-                Console.WriteLine("Enter your response below: ");
-
-                Console.WriteLine("");
-
-                string newEntry = Console.ReadLine();
-                Console.WriteLine("");
-                Entry anEntry = new Entry();
-                anEntry._entryText = newEntry;
-                anEntry._promptText = prompt;
-                anEntry._date = DateTime.Now;
-                myJournal.AddEntry(anEntry);
-                Console.WriteLine("");
+                string text = Console.ReadLine();
+                journal.AddEntry(prompt, text);
             }
-            else if (userEntry == 2)
+            else if (answer == "no")
+            {
+                Console.Write("Write your Journal prompt: ");
+                Console.WriteLine("");
+                string text = Console.ReadLine();
+                journal.AddEntry("", text);
+            }
+            }
+
+            else if (choice == 2)
             {
                 Console.WriteLine("");
-                myJournal.DisplayAll();
+                journal.DisplayAll();
                 Console.WriteLine("");
-
             }
-            else if (userEntry == 3)
+
+            else if (choice == 3)
             {
+                Console.Write("What file name would you like to save your entry in (ex: myJournal.txt)? ");
+                string fileName = Console.ReadLine();
+                journal.SaveToFile(fileName);
                 Console.WriteLine("");
+            }
+
+            else if (choice == 4)
+            {
                 Console.WriteLine("What file would you like to load? ");
-                string readfile = Console.ReadLine();
-                Journal readJournal = new Journal();
-                readJournal.LoadFromFile(readfile);
+                string filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
             }
 
-            else if (userEntry == 4)
+            else if (choice == 5)
             {
-                {
-                    Console.WriteLine("What file name would you like to save your entry in (ex: myJournal.txt? ");
-                    string filename = Console.ReadLine();
-                    Journal journalFile = new Journal();
-                    journalFile.SaveToFile(filename);
-                    Console.WriteLine("");
-                    Console.WriteLine();
-                    Console.WriteLine("");
-                }
+                Console.WriteLine("Exiting program...");
             }
 
-            else if (userEntry == 5)
-            {
-                Console.WriteLine("");
-                Console.WriteLine("Thank you! Have a great day!");
-                Console.WriteLine("");
-            }
             else
             {
-                Console.WriteLine("");
-                Console.WriteLine("I'm sorry, I do not understand. Please try again.");
-                Console.WriteLine("");
+                Console.WriteLine("Invalid option. Try again.");
             }
         }
+
     }
 }

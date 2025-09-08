@@ -1,11 +1,8 @@
 public class PromptGenerator
 {
-   public List<string>_prompts = new List<string>();
-   public Random random = new Random();
-   public string _prompt;
- public string GetRandomPrompt()
- {
-   List<string>_prompts = new List<string>()
+  public string GetRandomPrompt()
+  {
+    List<string> _prompts = new List<string>()
         {
          "What are you most grateful for today? ",
          "What three things made you happy today? ",
@@ -18,8 +15,8 @@ public class PromptGenerator
          "Who inspired you today and why? ",
          "Write down something funny that happened today. "
         };
-        Random random = new Random();
-        int index = random.Next(_prompts.Count);
-      return _prompts[index];
- }
+    Random random = new Random();
+    int index = random.Next(_prompts.Count);
+    return _prompts[index];
+  }
 }

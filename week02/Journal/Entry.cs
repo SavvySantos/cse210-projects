@@ -2,14 +2,24 @@ using System;
 
 public class Entry
 {
-    public DateTime _date { get; set;}
-    public string _promptText { get; set;}
-    public string _entryText { get; set;}
-    public void Display()
+    public DateTime Date { get; set; }
+    public string PromptText { get; set; }
+    public string Text { get; set; }
+
+
+    public Entry(string prompt, string newEntry)
     {
-        Console.WriteLine($"{_date}");
-        Console.WriteLine("");
-        Console.WriteLine($"{_promptText}");
-        Console.WriteLine($"{_entryText}");
+        Date = DateTime.Now;
+        PromptText = prompt;
+        Text = newEntry;
     }
+    public override string ToString()
+    {
+        return $"{Date:g}: {PromptText} - {Text}";
+    }
+    public string ToFileFormat()
+    {
+        return $"{Date} {PromptText}: {Text}";
+    }
+
 }
