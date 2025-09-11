@@ -7,9 +7,9 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello World! This is the Journal Project.")
+        Console.WriteLine("Hello World! This is the Journal Project.");
 
-        Console.WriteLine("What would you like to do? ")
+        Console.WriteLine("What would you like to do? ");
 
         Console.WriteLine();
 
