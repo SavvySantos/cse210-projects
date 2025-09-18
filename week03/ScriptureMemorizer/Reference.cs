@@ -15,6 +15,13 @@ public class Reference
     private int _chapter;
     private int _verse;
     private int _endVerse;
+    public Reference(string book, int chapter, int verse, int endVerse)
+    {
+        _book = book;
+        _chapter = chapter;
+        _verse = verse;
+        _endVerse = endVerse;
+    }
 
     public string GetBook()
     {
@@ -50,6 +57,22 @@ public class Reference
     }
     public string GetDisplayText()
     {
-        return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        if (_chapter == 0 && _verse == 0 && _endVerse == 0)
+        {
+            return _book;
+        }
+        if (_verse == _endVerse)
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        }
+        else
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+
+        }
+    }
+    public string ToFileFormat()
+    {
+        return _book;
     }
 }

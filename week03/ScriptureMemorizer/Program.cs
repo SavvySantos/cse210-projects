@@ -4,25 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Reference reference = new Reference();
-        reference.SetBook("Ether");
-        reference.SetChapter(12);
-        reference.SetVerse(27);
-        reference.SetEndVerse(28);
-        Scripture scripture = new Scripture(reference,
-          "27 And if men come unto me I will show unto them their weakness. I give unto men weakness that they may be humble; and my grace is sufficient for all men that humble themselves before me; for if they humble themselves before me, and have faith in me, then will I make weak things become strong unto them. 28 Behold, I will show unto the Gentiles their weakness, and I will show unto them that faith, hope and charity bringeth unto me—the fountain of all righteousness.");
+        Console.WriteLine("");
+        Console.WriteLine("Hello World! This is the Scripture Memorizer Program!");
+        Console.WriteLine("");
+
+        var scriptureGenerator = new RandomScriptures();
+        Scripture randomScripture = scriptureGenerator.GetRandomScripture();
+        ScripturesMemorized mastered = new ScripturesMemorized();
         string userInput = "";
 
-        Console.WriteLine("");
-        Console.WriteLine("Hello World! This is the ScriptureMemorizer Project.");
-        Console.WriteLine("");
-
-        Console.Clear();
-        Console.WriteLine(scripture.GetDisplayText());
-
-        while (userInput.ToLower() != "quit" && !scripture.IsCompletelyHidden())
+        while (userInput.ToLower() != "quit" && !randomScripture.IsCompletelyHidden())
         {
+            Console.Clear();
+            Console.WriteLine(randomScripture.GetDisplayText());
             Console.WriteLine(" ");
+
             Console.WriteLine("Hit enter to continue or type 'quit' to quit. ");
             userInput = Console.ReadLine();
             Console.WriteLine(" ");
@@ -31,9 +27,29 @@ class Program
                 break;
             }
 
-            scripture.HideRandomWords(3);
-            Console.Clear();
-            Console.WriteLine(scripture.GetDisplayText());
+            randomScripture.HideRandomWords(3);
+        }
+        Console.Clear();
+        Console.WriteLine(randomScripture.GetDisplayText());
+        Console.WriteLine("");
+
+        if (randomScripture.IsCompletelyHidden())
+        {
+            Console.WriteLine("Congratulations! You memorized this Scripture!");
+        }
+
+        mastered.AddReference(randomScripture.GetReference());
+
+        Console.WriteLine("What file would you like to save the scripture reference? ");
+        string fileName = Console.ReadLine();
+        mastered.SaveReference(fileName);
+
+        Console.WriteLine("Would you like to continue to another random Scripture? ");
+        string answer = Console.ReadLine();
+
+        if (answer.ToLower() == "yes")
+        {
+            Console.WriteLine("Please restart the program for a new scripture!");
         }
 
         Console.WriteLine("Thank you fo using the scripture memorizing program! Program has now ended.");

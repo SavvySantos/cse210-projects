@@ -4,7 +4,12 @@ using System.Collections.Generic;
 
 public class ScripturesMemorized
 {
-    private List<Reference> _references = new List<Reference>();
+    private List<Reference> _references;
+
+    public ScripturesMemorized()
+    {
+        _references = new List<Reference>();
+    }
     public void AddReference(Reference reference)
     {
         _references.Add(reference);
