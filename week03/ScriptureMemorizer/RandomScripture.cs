@@ -28,7 +28,7 @@ public class RandomScriptures
 
     }
     public Scripture GetRandomScripture()
-    
+    {
         if (_scriptures.Count == 0)
         {
             return null;
