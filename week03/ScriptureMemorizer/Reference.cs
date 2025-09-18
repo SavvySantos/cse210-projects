@@ -9,21 +9,12 @@
 // _endVerse : int
 
 using System.Collections.Concurrent;
-
-class Reference
+public class Reference
 {
     private string _book;
     private int _chapter;
     private int _verse;
     private int _endVerse;
-
-    // public Reference()
-    // {
-    //     _book = "Ether";
-    //     _chapter = 12;
-    //     _verse = 27;
-    //     _endVerse = 28;
-    // }
     public Reference(string book, int chapter, int verse, int endVerse)
     {
         _book = book;
@@ -31,24 +22,57 @@ class Reference
         _verse = verse;
         _endVerse = endVerse;
     }
-    public string Book
+
+    public string GetBook()
     {
-        get { return _book; }
+        return _book;
     }
-        public int Chapter
+    public int GetChapter()
     {
-        get { return _chapter; }
+        return _chapter;
     }
-        public int Verse
+    public int GetVerse()
     {
-        get { return _verse; }
+        return _verse;
     }
-        public int EndVerse
+    public int GetEndVerse()
     {
-        get { return _endVerse; }
+        return _endVerse;
     }
-    public void GetDisplayText()
+    public void SetBook(string book)
     {
-        Console.WriteLine($"{_book} {_chapter}:{_verse}-{_endVerse}");
+        _book = book;
+    }
+    public void SetChapter(int chapter)
+    {
+        _chapter = chapter;
+    }
+    public void SetVerse(int verse)
+    {
+        _verse = verse;
+    }
+    public void SetEndVerse(int endVerse)
+    {
+        _endVerse = endVerse;
+    }
+    public string GetDisplayText()
+    {
+        if (_chapter == 0 && _verse == 0 && _endVerse == 0)
+        {
+            return _book;
+        }
+        if (_verse == _endVerse)
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+        }
+        else
+        {
+            return $"{_book} {_chapter}:{_verse}-{_endVerse}";
+
+        }
+    }
+    public string ToFileFormat()
+    {
+        return _book;
     }
 }
