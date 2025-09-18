@@ -10,34 +10,46 @@
 
 using System;
 using System.Runtime.CompilerServices;
-class Word
+public class Word
 {
     private string _text;
     private bool _isHidden;
 
-    public Word()
+    public Word(string text)
     {
-        _text = "27 And if men come unto me I will show unto them their weekness. I give unto men weakness that they may be humble; and my grace is sufficient for all men that humble themselves before me; for if tey humble themselves before me, and have faith in me, then will I make weak things become strong unto them. 28 Behold, I will show unto the Gentiles their weakness, and I will show unto them that faith, hope and charity bringeth unto me-- the fountain of all rightousness.";
-       // _isHidden = 
+        _text = text;
+        _isHidden = false;
     }
+
     public void Hide()
     {
-
+        _isHidden = true;
     }
 
     public void Show()
     {
-
+        _isHidden = false;
     }
 
     public bool IsHidden()
     {
-        return IsHidden();
+        return _isHidden;
     }
 
     public string GetDisplayText()
     {
-        return "";
+        if (_isHidden)
+        {
+            return "_____";
+        }
+        else
+        {
+            return _text;
+        }
+    }
+    public string GetScripture()
+    {
+        return _text;
     }
 }
 

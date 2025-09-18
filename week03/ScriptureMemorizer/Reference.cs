@@ -9,47 +9,47 @@
 // _endVerse : int
 
 using System.Collections.Concurrent;
-
-class Reference
+public class Reference
 {
     private string _book;
     private int _chapter;
     private int _verse;
     private int _endVerse;
 
-    // public Reference()
-    // {
-    //     _book = "Ether";
-    //     _chapter = 12;
-    //     _verse = 27;
-    //     _endVerse = 28;
-    // }
-    public Reference(string book, int chapter, int verse, int endVerse)
+    public string GetBook()
+    {
+        return _book;
+    }
+    public int GetChapter()
+    {
+        return _chapter;
+    }
+    public int GetVerse()
+    {
+        return _verse;
+    }
+    public int GetEndVerse()
+    {
+        return _endVerse;
+    }
+    public void SetBook(string book)
     {
         _book = book;
+    }
+    public void SetChapter(int chapter)
+    {
         _chapter = chapter;
+    }
+    public void SetVerse(int verse)
+    {
         _verse = verse;
+    }
+    public void SetEndVerse(int endVerse)
+    {
         _endVerse = endVerse;
     }
-    public string Book
+    public string GetDisplayText()
     {
-        get { return _book; }
-    }
-    public int Chapter
-    {
-        get { return _chapter; }
-    }
-    public int Verse
-    {
-        get { return _verse; }
-    }
-    public int EndVerse
-    {
-        get { return _endVerse; }
-    }
-    public void GetDisplayText()
-    {
-        Console.WriteLine($"{_book} {_chapter}:{_verse}-{_endVerse}");
+        return $"{_book} {_chapter}:{_verse}-{_endVerse}";
     }
 }
-
