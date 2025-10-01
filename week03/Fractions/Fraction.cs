@@ -5,14 +5,14 @@ public class Fraction
     private int _top;
     private int _bottom;
 
-    public Fraction() // this is my constructor with no parameters - Parameters is what is written within the ().
+    public Fraction()
     {
         // Default to 1/1
         _top = 1;
         _bottom = 1;
     }
 
-    public Fraction(int wholeNumber) // this is my constructor with only one parameter (int wholeNumber)
+    public Fraction(int wholeNumber)
     {
         _top = wholeNumber;
         _bottom = 1;

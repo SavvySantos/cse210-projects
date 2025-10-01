@@ -22,4 +22,3 @@ public class Comment
         return _commentText;
     }
 }
-
