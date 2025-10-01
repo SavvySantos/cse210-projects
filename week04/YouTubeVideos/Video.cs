@@ -7,7 +7,6 @@ public class Video
     private string _author;
     private int _seconds;
     private List<Comment> _commentList = new List<Comment>();
-  //  private List<Video> _video = new List<Video>();
 
     public Video (string title, string author, int seconds)
     {
@@ -15,11 +14,6 @@ public class Video
         _author = author;
         _seconds = seconds;
     }
-
-    //public void AddVideos(Video video)
-    //{
-      //  _video.Add(video);
-    //}
 
     public void AddComments(Comment comment)
     {
