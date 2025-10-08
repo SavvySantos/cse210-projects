@@ -17,7 +17,7 @@ public class Order
     {
         if (product != null)
         {
-        _products.Add(product);
+            _products.Add(product);
         }
     }
 
@@ -68,7 +68,7 @@ public class Order
     {
         if (_customer != null)
         {
-           _customer.DisplayAll();
+            _customer.DisplayAll();
         }
         else
         {

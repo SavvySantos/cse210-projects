@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-
 public class Customer
 {
-    public string _customerName;
-    public Address _customerAddress;
+    private string _customerName;
+    private Address _customerAddress;
 
     public Customer(string customerName, Address customerAddress)
     {

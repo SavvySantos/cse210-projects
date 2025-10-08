@@ -19,30 +19,6 @@ public class Address
         _country = country;
     }
 
-    public string GetStreetAddress()
-    {
-        return _streetAddress;
-    }
-
-    public string GetCity()
-    {
-        return _city;
-    }
-
-    public string GetState()
-    {
-        return _state;
-    }
-
-    public string GetProvince()
-    {
-        return _province;
-    }
-
-    public string GetCountry()
-    {
-        return _country;
-    }
 
     public bool InTheUSA()
     {

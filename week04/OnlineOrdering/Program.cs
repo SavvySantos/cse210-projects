@@ -21,11 +21,11 @@ class Program
 
         Address address2 = new Address("410 12th St", "Carrizozo", "NM", null, "USA");
         Customer customer2 = new Customer("Julio Sanchez", address2);
-        
+
         Product product4 = new Product("Car Coding", 258963, 29.95m, 2);
         Product product5 = new Product("Drill Bits", 456789, 17.46m, 4);
         Product product6 = new Product("Water Hose", 456852, 35.00m, 1);
-        
+
         Order order2 = new Order(customer2);
         order2.AddProduct(product4);
         order2.AddProduct(product5);
@@ -46,8 +46,8 @@ class Program
         Console.WriteLine($"Total Order Price: ${order1Total:F2}");
 
         Console.WriteLine("_______________________________________");
-        
-                Console.WriteLine("----Packing Label----");
+
+        Console.WriteLine("----Packing Label----");
         Console.WriteLine(order2.GetPackingLabel());
 
         Console.WriteLine("----Shipping Label----");

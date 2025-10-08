@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 class Program
 {
@@ -14,7 +13,7 @@ class Program
         video1.AddComments(new Comment("Mia", "This made my day! Thank you!"));
         video1.AddComments(new Comment("Ava", "That was great! I understand that better now!"));
         videos.Add(video1);
-        
+
         Video video2 = new Video("Viking Braid Tutorial", "Crown & Confidence", 923);
         video2.AddComments(new Comment("Susie", "Great tips! Extremely helpful."));
         video2.AddComments(new Comment("Gwen", "Can't wait to try out this hairstyle! So cute!"));
@@ -27,7 +26,7 @@ class Program
         video3.AddComments(new Comment("Lucas", "This helped me so much!"));
         videos.Add(video3);
 
-        foreach (var video in videos)
+        foreach (Video video in videos)
         {
             Console.WriteLine("_______________________________________");
             Console.WriteLine($"Title: {video.GetTitle()}");
